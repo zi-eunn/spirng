@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RateDiscountPolicyTest {
 
+    //ctrl + shift 하면 테스트 파일 바로 생긴댄다
     RateDiscountPolicy discountPolicy = new RateDiscountPolicy();
 
     @Test
