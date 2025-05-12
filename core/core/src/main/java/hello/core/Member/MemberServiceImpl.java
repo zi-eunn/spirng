@@ -1,5 +1,6 @@
 package hello.core.Member;
 
+//사용자가 사용 가능한 기능 구현
 public class MemberServiceImpl implements MemberService {
 
     //가입을 하고 회원을 찾으려면 Repository 필요
