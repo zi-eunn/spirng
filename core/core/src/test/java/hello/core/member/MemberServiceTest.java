@@ -1,16 +1,28 @@
 package hello.core.member;
 
+import hello.core.AppConfig;
 import hello.core.Member.Grade;
 import hello.core.Member.Member;
 import hello.core.Member.MemberService;
 import hello.core.Member.MemberServiceImpl;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class MemberServiceTest {
 
-    MemberService memberService = new MemberServiceImpl();
+    //MemberService memberService = new MemberServiceImpl();
 
+    MemberService memberService;
+
+    //각 테스트 실행전에 무조건 실행되는 것
+    @BeforeEach
+    public void beforEach() {
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+    }
+
+    public
     @Test
     void join() {
         //given - 이런게
