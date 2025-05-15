@@ -32,6 +32,7 @@ class ApplicationContextBasicFindTest {
     @Test
     @DisplayName("구체 타입으로 조회")
     void findBeanByName2() {
+        //역할에 의존하지 않고 구현에 의존했음!! 좋은 코드는 아님
         MemberServiceImpl memberService = ac.getBean("memberService", MemberServiceImpl.class);
         assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
     }
