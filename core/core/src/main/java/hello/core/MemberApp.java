@@ -3,31 +3,31 @@ package hello.core;
 import hello.core.Member.Grade;
 import hello.core.Member.Member;
 import hello.core.Member.MemberService;
-import hello.core.Member.MemberServiceImpl;
-import hello.core.order.Order;
-import hello.core.order.OrderService;
-import hello.core.order.OrderServiceImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class OrderApp {
+public class MemberApp {
+    //테스트
     public static void main(String[] args) {
+        //기능(Service)을 사용해야 함. 따라서 MemberServiceImpl 생성
         //MemberService memberService = new MemberServiceImpl();
-        //OrderService orderService = new OrderServiceImpl();
 
         //AppConfig appConfig = new AppConfig();
         //MemberService memberService = appConfig.memberService();
-        //OrderService orderService = appConfig.orderService();
 
+        //스프링 생성하기 !! ApplicationContext가 @Bean을 다 관리해줌
+        //AppConfig를 파라미터로 넣어주면
+        //환경 설정 정볼르 가지고 @Bean을 컨테이너에 넣어서 관리해줌
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
-        MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
-        OrderService orderService = applicationContext.getBean("orderService", OrderService.class);
 
-        long memberId = 1L;
-        Member member = new Member(memberId, "memberA", Grade.VIP);
+        //1. 이름 2. 타입
+        MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
+
+        Member member = new Member(1L, "memberA", Grade.VIP);
         memberService.join(member);
 
-        Order order = orderService.createOrder(memberId, "itemA", 10000);
-        System.out.println("order = " + order);
+        Member findMember = memberService.findMember(1L);
+        System.out.println("new member = " + member.getName());
+        System.out.println("find member = " + findMember.getName());
     }
 }
