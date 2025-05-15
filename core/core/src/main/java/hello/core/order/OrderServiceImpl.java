@@ -9,9 +9,18 @@ import hello.core.discount.FixDiscountPolicy;
 public class OrderServiceImpl implements OrderService{
 
     //memberRepository에서 회원 찾아야 함
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    //private final MemberRepository memberRepository = new MemoryMemberRepository();
     //할인된 가격 계산 해야하니까 -> 고정 할인 정책
-    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
+    //private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
+
+    //AppConfig 후에 아래처럼 사용
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
+
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
