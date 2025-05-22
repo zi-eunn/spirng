@@ -5,10 +5,13 @@ import hello.core.Member.MemberRepository;
 import hello.core.Member.MemoryMemberRepository;
 import hello.core.discount.DiscountPolicy;
 import hello.core.discount.FixDiscountPolicy;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
+//롬복으로 생성자 만들어짐 -> ctrl + f12로 생성자 확인가능
 public class OrderServiceImpl implements OrderService{
 
     //memberRepository에서 회원 찾아야 함
@@ -20,11 +23,12 @@ public class OrderServiceImpl implements OrderService{
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
-    @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }
+//    @Autowired
+//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+//        this.memberRepository = memberRepository;
+//        this.discountPolicy = discountPolicy;
+//    } //lombok을 사용하면 생성자 생략가능!
+    //final이 붙은 애들로 생성자를 자동으로 만들어줌
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
