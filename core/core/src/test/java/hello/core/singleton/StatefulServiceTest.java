@@ -18,11 +18,13 @@ class StatefulServiceTest {
 
         //ThreadA: A사용자 10000원 주문
         statefulService1.order("userA", 10000);
+        //int userAPrice =
         //ThreadB: B사용자 20000원 주문
         statefulService2.order("userA", 20000);
+        //int userBPrice =
 
-        int price = statefulService1.getPrice();
-        System.out.println("price: " + price);
+        int price = statefulService1.getPrice(); //지역변수를 사용하면 필요없는 코드
+        System.out.println("price: " + price); //price를 userAPrice로 변경
 
         Assertions.assertThat(statefulService1.getPrice()).isEqualTo(20000);
     }
