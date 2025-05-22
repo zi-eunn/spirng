@@ -12,3 +12,18 @@ public class StatefulService {
         return price;
     }
 }
+
+//지역변수 사용!!!!
+//public class StatefulService {
+//    //private int price;
+//
+//    public void order(String name, int price) {
+//        System.out.println("name = " + name + " price = " + price);
+//        //this.price = price; //여기가 문제
+//        return price;
+//    }
+//
+//    public int getPrice() {
+//        //return price;
+//    }
+//}
