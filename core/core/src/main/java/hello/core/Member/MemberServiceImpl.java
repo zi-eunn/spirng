@@ -1,8 +1,11 @@
 package hello.core.Member;
 
 import hello.core.order.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 //사용자가 사용 가능한 기능 구현
+@Component
 public class MemberServiceImpl implements MemberService {
 
     //가입을 하고 회원을 찾으려면 Repository 필요
@@ -13,6 +16,7 @@ public class MemberServiceImpl implements MemberService {
     private final MemberRepository memberRepository;
 
     //memberrespository에 뭐가 들어갈 지 생성자를 통해서 선택을 함
+    @Autowired
     public MemberServiceImpl(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
